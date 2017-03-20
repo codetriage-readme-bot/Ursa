@@ -6,13 +6,10 @@ import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-import static play.mvc.Controller.request;
-import static play.mvc.Results.ok;
-
-/**
- * Created by caden on 3/19/2017.
- */
-public class GoogleUser {
+/*  Google User will handle the storage of user accounts, token validation, detection of logged in / existence, as well as
+*   other Google Account actions.
+*/
+public class GoogleUser extends Controller {
     private static String googleUserID = "";
     private static String googleUserName = "";
     private static String googleUserImageURL = "";
@@ -69,4 +66,9 @@ public class GoogleUser {
         /* TODO: Authenticate user w/ tokens instead of ID, store information in a database (mongodb) */
         return ok("200");
     }
+
+    class GoogleUserObject {
+
+    }
+
 }
