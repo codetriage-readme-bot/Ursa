@@ -6,10 +6,13 @@ import play.mvc.BodyParser;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import static play.mvc.Controller.request;
+import static play.mvc.Results.ok;
+
 /**
  * Created by caden on 3/19/2017.
  */
-public class GoogleUser extends Controller {
+public class GoogleUser {
     private static String googleUserID = "";
     private static String googleUserName = "";
     private static String googleUserImageURL = "";
@@ -51,7 +54,6 @@ public class GoogleUser extends Controller {
     public static Result googleUser() {
         JsonNode json = request().body().asJson();
         json.fields().forEachRemaining(e -> Logger.info(" : " + e.getKey() + " " + e.getValue()));
-//        Logger.info(" TEST"  + json.asText());
 
         json.fields().forEachRemaining(e -> {
             if (e.getKey().equals("id")) {
@@ -64,6 +66,7 @@ public class GoogleUser extends Controller {
                 setGoogleUserEmail(e.getValue().textValue());
             }
         });
-        return ok();
+        /* TODO: Authenticate user w/ tokens instead of ID, store information in a database (mongodb) */
+        return ok("200");
     }
 }

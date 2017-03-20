@@ -24,7 +24,7 @@ public class Application extends Controller {
 
     public static Result research() {
         currentPage = "research";
-        return ok(research.render("Ursa - Research", head.render(), navbar.render()));
+        return ok(research.render("Ursa - Research", head.render(), navbar.render(), footer.render()));
     }
 
 }

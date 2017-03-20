@@ -1,41 +1,17 @@
 <script type="text/javascript">
     function onLoad() {
         var currentUser = document.getElementById('#currentUser');
-        currentUser.innerHTML ="Currently signed in as:  \<br/> " +  "@GoogleUser.getGoogleUserEmail";
-
+        currentUser.innerHTML = "Currently signed in as:  \<br/> " + "@GoogleUser.getGoogleUserEmail";
     }
-                        function signOut() {
-                            var auth2 = gapi.auth2.getAuthInstance();
-                            auth2.signOut().then(function () {
-                                console.log('User signed out.');
-                            });
-                        }
-                function onSignIn(googleUser) {
-                    var profile = googleUser.getBasicProfile();
-                    var sendData = JSON.stringify({
-                        id: profile.getId(),
-                        name: profile.getName(),
-                        imageurl: profile.getImageUrl(),
-                        email: profile.getEmail()
-                    });
-                    $.ajax({
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json'
-                        },
-                        type: 'PUT',
-                        url: '/googleUser',
-                        data: sendData,
-                        dataType: 'json',
-                        success: function () {
-                        }
-                    });
-                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use   an ID token instead.
-                    console.log('Name: ' + profile.getName());
-                    console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail());
-                    console.log("Saved ID:" + "@GoogleUser.getGoogleUserID");
-                }
+
+    function signOut() {
+        /* TODO:
+         * Verify user is signed in
+         * Sign user out (auth2)
+         * Redirect to home page to indicate success */
+        console.log('User signed out.');
+        window.location = "/";
+    }
         </script>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">

@@ -41,12 +41,11 @@
                 };
 
                 function attachSignin(element) {
-                    console.log(element.id);
                     auth2.attachClickHandler(element, {},
                             function(googleUser) {
                                 onSignIn(googleUser);
                             }, function(error) {
-                                alert(JSON.stringify(error, undefined, 2));
+                                console.log(error);
                             });
                 }
                 function onSignIn(googleUser) {
@@ -67,14 +66,15 @@
                         data: sendData,
                         dataType: 'json',
                         success: function () {
+                            console.log('ID: ' + '@GoogleUser.getGoogleUserID'); // Do not send to your backend! Use   an ID token instead.
+                            console.log('Name: ' + '@GoogleUser.getGoogleUserName');
+                            console.log('Image URL: ' + '@GoogleUser.getGoogleUserID');
+                            console.log('Email: ' + '@GoogleUser.getGoogleUserEmail');
+                            console.log("Saved ID:" + '@GoogleUser.getGoogleUserID');
+                            window.location = "/application";
                         }
                     });
-                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use   an ID token instead.
-                    console.log('Name: ' + profile.getName());
-                    console.log('Image URL: ' + profile.getImageUrl());
-                    console.log('Email: ' + profile.getEmail());
-                    console.log("Saved ID:" + "@GoogleUser.getGoogleUserID");
-                    window.location = "/application";
+
 
                 }
         </script>
