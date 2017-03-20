@@ -95,3 +95,29 @@ body {
 .hspace {
     padding-top:50px;
 }
+
+.enter {
+    font-family: "lato", sans-serif;
+    background-color: #4A66F1;
+    color: white;
+    height: 75px;
+    width: 250px;
+    text-decoration: none;
+    text-align: center;
+    margin: 0 auto;
+    font-size: 32px;
+}
+
+.enter span {
+    line-height: 75px;
+}
+
+.enter:hover {
+    cursor: pointer;
+    background-color: #3f57ce;
+}
+
+.little-text{
+    font-size:12px;
+    color:#ccc;
+}

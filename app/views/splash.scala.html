@@ -22,37 +22,33 @@
         @head
         <link rel="stylesheet" href="@routes.Assets.at("stylesheets/splash.css")">
         <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+        <script src="https://apis.google.com/js/api:client.js"></script>
     </head>
     <body>
-
-        <main class="splash">
-            <div class="mdl-grid">
-                <div id='stars'></div>
-                <div id='stars2'></div>
-                <div id='stars3'></div>
-                <div class="mdl-cell mdl-cell--12-col">
-                    <div id='title'>
-                        <img src="@routes.Assets.at("images/logoWhite.png")" height="200" width="200">
-                        <div class="hspace"></div>
-                        <div class="hspace"></div>
-
-                        <span>
-                            Unified Research<br/>Support Assistant
-                        </span>
-                        <div class="hspace"></div>
-                        <br/>
-                    </div>
-                    <div>
-                        <div class="g-signin2 center data-onsuccess="onSignIn"  data-redirecturi="/application" style="height:50px;width:200px"></div>
-                        <div style="padding-top:20%;"></div>
-                    <br/>
-                    </div>
-                <br/>
-                </div>
-        </main>
-        @footer
         <script>
+                var googleUser = {};
+                var startApp = function() {
+                    gapi.load('auth2', function(){
+                        // Retrieve the singleton for the GoogleAuth library and set up the client.
+                        auth2 = gapi.auth2.init({
+                            client_id: '554187524614-bkdf68gkhjs7a9gepdd72vbf9lepve8j.apps.googleusercontent.com',
+                            cookiepolicy: 'single_host_origin',
+                            // Request scopes in addition to 'profile' and 'email'
+                            //scope: 'additional_scope'
+                        });
+                        attachSignin(document.getElementById('googleSignIn'));
+                    });
+                };
 
+                function attachSignin(element) {
+                    console.log(element.id);
+                    auth2.attachClickHandler(element, {},
+                            function(googleUser) {
+                                onSignIn(googleUser);
+                            }, function(error) {
+                                alert(JSON.stringify(error, undefined, 2));
+                            });
+                }
                 function onSignIn(googleUser) {
                     var profile = googleUser.getBasicProfile();
                     var sendData = JSON.stringify({
@@ -78,9 +74,41 @@
                     console.log('Image URL: ' + profile.getImageUrl());
                     console.log('Email: ' + profile.getEmail());
                     console.log("Saved ID:" + "@GoogleUser.getGoogleUserID");
+                    window.location = "/application";
+
                 }
         </script>
 
+        <main class="splash">
+            <div class="mdl-grid">
+                <div id='stars'></div>
+                <div id='stars2'></div>
+                <div id='stars3'></div>
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div id='title'>
+                        <img src="@routes.Assets.at("images/logoWhite.png")" height="200" width="200">
+                        <div class="hspace"></div>
+                        <div class="hspace"></div>
+
+                        <span>
+                            Unified Research<br/>Support Assistant
+                        </span>
+                        <div class="hspace"></div>
+                        <br/>
+                    </div>
+                    <div>
+                        <div id="gSignInWrapper">
+                        <div id="googleSignIn" class="enter" data-onsuccess="onSignIn"  data-redirecturi="/application"><span>Open Ursa<br/>
+                        </span><p class="little-text">(Using Google)</p></div>
+                        </div>
+                        <div style="padding-top:20%;"></div>
+                    <br/>
+                    </div>
+                </div>
+            </div>
+        </main>
+        @footer
+        <script>startApp();</script>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>
 </html>
