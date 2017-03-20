@@ -54,7 +54,9 @@
                         id: profile.getId(),
                         name: profile.getName(),
                         imageurl: profile.getImageUrl(),
-                        email: profile.getEmail()
+                        email: profile.getEmail(),
+                        idtoken: googleUser.getAuthResponse().id_token,
+
                     });
                     $.ajax({
                         headers: {
@@ -66,11 +68,6 @@
                         data: sendData,
                         dataType: 'json',
                         success: function () {
-                            console.log('ID: ' + '@GoogleUser.getGoogleUserID'); // Do not send to your backend! Use   an ID token instead.
-                            console.log('Name: ' + '@GoogleUser.getGoogleUserName');
-                            console.log('Image URL: ' + '@GoogleUser.getGoogleUserID');
-                            console.log('Email: ' + '@GoogleUser.getGoogleUserEmail');
-                            console.log("Saved ID:" + '@GoogleUser.getGoogleUserID');
                             window.location = "/application";
                         }
                     });
@@ -110,6 +107,5 @@
         </main>
         @footer
         <script>startApp();</script>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>
 </html>
