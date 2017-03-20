@@ -14,6 +14,7 @@ public class Application extends Controller {
     }
 
     public static Result index() {
+        /* TODO check is user is logged in, if not redirect to splash */
 //        if(!GoogleUser.getGoogleUserID().equals("")) {
             currentPage = "index";
             return ok(index.render("Ursa - Dashboard", head.render(), navbar.render(), footer.render()));
