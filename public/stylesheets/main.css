@@ -513,3 +513,5 @@ footer {
 .mdl-mini-footer {
     background-color:Black;
 }
+
+/* TODO remove all "demo" names, simplify statements (switch to SASS)*/
