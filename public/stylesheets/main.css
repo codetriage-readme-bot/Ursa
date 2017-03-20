@@ -461,7 +461,7 @@ html, body {
 }
 
 .demo-header {
-    background-color: #F3F3F3 !important;
+    background-color: #2f3450 !important;
     color: #F5F5F5 !important;
 }
 
@@ -492,7 +492,7 @@ html, body {
 }
 
 .mdl-layout-title {
-    color: #2F3450;
+    color: white;
 }
 
 .demo-drawer-header {
@@ -504,12 +504,13 @@ html, body {
 }
 
 footer {
-    z-index:99;
-    height:10px;
-    padding-top:5px !important;
+    z-index: 99;
+    height: 10px;
+    padding-top: 5px !important;
 }
-
 
 .mdl-mini-footer {
-    background-color:Black;
+    background-color: Black;
 }
+
+/* TODO remove all "demo" names, simplify statements (switch to SASS)*/

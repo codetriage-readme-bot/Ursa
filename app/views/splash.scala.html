@@ -27,8 +27,8 @@
     <body>
         <script>
                 var googleUser = {};
-                var startApp = function() {
-                    gapi.load('auth2', function(){
+                var startApp = function () {
+                    gapi.load('auth2', function () {
                         // Retrieve the singleton for the GoogleAuth library and set up the client.
                         auth2 = gapi.auth2.init({
                             client_id: '554187524614-bkdf68gkhjs7a9gepdd72vbf9lepve8j.apps.googleusercontent.com',
@@ -42,9 +42,9 @@
 
                 function attachSignin(element) {
                     auth2.attachClickHandler(element, {},
-                            function(googleUser) {
+                            function (googleUser) {
                                 onSignIn(googleUser);
-                            }, function(error) {
+                            }, function (error) {
                                 console.log(error);
                             });
                 }
@@ -54,7 +54,9 @@
                         id: profile.getId(),
                         name: profile.getName(),
                         imageurl: profile.getImageUrl(),
-                        email: profile.getEmail()
+                        email: profile.getEmail(),
+                        idtoken: googleUser.getAuthResponse().id_token,
+
                     });
                     $.ajax({
                         headers: {
@@ -66,11 +68,6 @@
                         data: sendData,
                         dataType: 'json',
                         success: function () {
-                            console.log('ID: ' + '@GoogleUser.getGoogleUserID'); // Do not send to your backend! Use   an ID token instead.
-                            console.log('Name: ' + '@GoogleUser.getGoogleUserName');
-                            console.log('Image URL: ' + '@GoogleUser.getGoogleUserID');
-                            console.log('Email: ' + '@GoogleUser.getGoogleUserEmail');
-                            console.log("Saved ID:" + '@GoogleUser.getGoogleUserID');
                             window.location = "/application";
                         }
                     });
@@ -98,17 +95,17 @@
                     </div>
                     <div>
                         <div id="gSignInWrapper">
-                        <div id="googleSignIn" class="enter" data-onsuccess="onSignIn"  data-redirecturi="/application"><span>Open Ursa<br/>
-                        </span><p class="little-text">(Using Google)</p></div>
+                            <div id="googleSignIn" class="enter" data-onsuccess="onSignIn" data-redirecturi="/application"><span>
+                                Open Ursa<br/>
+                            </span><p class="little-text">(Using Google)</p></div>
                         </div>
-                        <div style="padding-top:20%;"></div>
-                    <br/>
+                        <div style="padding-top: 20%;"></div>
+                        <br/>
                     </div>
                 </div>
             </div>
         </main>
         @footer
         <script>startApp();</script>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
     </body>
 </html>
