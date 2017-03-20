@@ -1,0 +1,86 @@
+@(title: String, head: Html, footer: Html)
+<!doctype html>
+<!--
+  Material Design Lite
+  Copyright 2015 Twitter Inc. All rights reserved.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      https://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License
+-->
+<html lang="en">
+    <head>
+        <title>@title</title>
+        @head
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/splash.css")">
+        <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+    </head>
+    <body>
+
+        <main class="splash">
+            <div class="mdl-grid">
+                <div id='stars'></div>
+                <div id='stars2'></div>
+                <div id='stars3'></div>
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div id='title'>
+                        <img src="@routes.Assets.at("images/logoWhite.png")" height="200" width="200">
+                        <div class="hspace"></div>
+                        <div class="hspace"></div>
+
+                        <span>
+                            Unified Research<br/>Support Assistant
+                        </span>
+                        <div class="hspace"></div>
+                        <br/>
+                    </div>
+                    <div>
+                        <div class="g-signin2 center data-onsuccess="onSignIn"  data-redirecturi="/application" style="height:50px;width:200px"></div>
+                        <div style="padding-top:20%;"></div>
+                    <br/>
+                    </div>
+                <br/>
+                </div>
+        </main>
+        @footer
+        <script>
+
+                function onSignIn(googleUser) {
+                    var profile = googleUser.getBasicProfile();
+                    var sendData = JSON.stringify({
+                        id: profile.getId(),
+                        name: profile.getName(),
+                        imageurl: profile.getImageUrl(),
+                        email: profile.getEmail()
+                    });
+                    $.ajax({
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        type: 'PUT',
+                        url: '/googleUser',
+                        data: sendData,
+                        dataType: 'json',
+                        success: function () {
+                        }
+                    });
+                    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use   an ID token instead.
+                    console.log('Name: ' + profile.getName());
+                    console.log('Image URL: ' + profile.getImageUrl());
+                    console.log('Email: ' + profile.getEmail());
+                    console.log("Saved ID:" + "@GoogleUser.getGoogleUserID");
+                }
+        </script>
+
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+    </body>
+</html>
