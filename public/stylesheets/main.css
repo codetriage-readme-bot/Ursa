@@ -510,6 +510,12 @@ footer {
     padding-top: 5px !important;
 }
 
+@media only screen and (max-width: 500px) {
+    footer {
+        z-index: 0;
+    }
+}
+
 .mdl-mini-footer {
     background-color: Black;
 }
