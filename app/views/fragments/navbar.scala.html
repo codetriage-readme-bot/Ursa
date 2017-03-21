@@ -1,45 +1,45 @@
 @(pageName: String)
 <script type="text/javascript">
-    function onLoad() {
-        gapi.load('auth2', function () {
-            gapi.auth2.init();
-        });
-
-    }
-    function userSignedIn() {
-        var currentUser = document.getElementById('#currentUser');
-        currentUser.innerHTML = "Currently signed in as:  \<br/> " + "@GoogleUser.getGoogleUserEmail";
-    }
-    /* TODO:
-     * Verify user is signed in
-     * Sign user out (auth2)
-     * Redirect to home page to indicate success */
-    function signOutUser() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-            const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
-
-            var sendData = JSON.stringify({
-                idtoken: googleUser.getAuthResponse().id_token
+        function onLoad() {
+            gapi.load('auth2', function () {
+                gapi.auth2.init();
             });
 
-            $.ajax({
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                type: 'PUT',
-                url: '/signOut',
-                data: sendData,
-                dataType: 'json',
-                success: function () {
-                    window.location = "/application";
-                }
+        }
+        function userSignedIn() {
+            var currentUser = document.getElementById('#currentUser');
+            currentUser.innerHTML = "Currently signed in as:  \<br/> " + "@GoogleUser.getGoogleUserEmail";
+        }
+        /* TODO:
+         * Verify user is signed in
+         * Sign user out (auth2)
+         * Redirect to home page to indicate success */
+        function signOutUser() {
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
+
+                var sendData = JSON.stringify({
+                    idtoken: googleUser.getAuthResponse().id_token
+                });
+
+                $.ajax({
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    type: 'PUT',
+                    url: '/signOut',
+                    data: sendData,
+                    dataType: 'json',
+                    success: function () {
+                        window.location = "/application";
+                    }
+                });
+                window.location = "/";
             });
-            window.location = "/";
-        });
-    }
-        </script>
+        }
+</script>
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -71,12 +71,14 @@
             <a class=" muted-text center " href="#" onclick="signOutUser();">Sign out</a>
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
-            <a class="mdl-navigation__link @if(Application.currentPage.equals("index")) {activePage}" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">dashboard</i>
+            <a class="mdl-navigation__link @if(Application.currentPage.equals("index")) {activePage}" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
+                dashboard</i>
                 Dashboard</a>
-            <a class="mdl-navigation__link @if(Application.currentPage.equals("researchLog")) {activePage}" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">assignment</i>
+            <a class="mdl-navigation__link @if(Application.currentPage.equals("researchLog")) {activePage}" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
+                assignment</i>
                 Research Log</a>
-            <a class="mdl-navigation__link @if(Application.currentPage.equals("research")) {activePage}" href="/research"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">find_in_page</i>Research</a>
+            <a class="mdl-navigation__link @if(Application.currentPage.equals("research")) {activePage}" href="/research"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
+                find_in_page</i>Research</a>
             <div class="mdl-layout-spacer"></div>
-            <span class="muted-text center">Ursa.Minor.1</span>
         </nav>
     </div>

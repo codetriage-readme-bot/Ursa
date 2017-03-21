@@ -2,8 +2,8 @@ package controllers;
 
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.fragments.*;
 import views.html.*;
+import views.html.fragments.*;
 
 public class Application extends Controller {
     public static String currentPage = "index";

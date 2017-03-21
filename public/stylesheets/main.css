@@ -266,7 +266,7 @@ html, body {
     padding-top: 50px !important;
     width: 150px;
     height: 150px;
-    padding-bottom:25px;
+    padding-bottom: 25px;
 }
 
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {
@@ -365,6 +365,7 @@ html, body {
 }
 
 .demo-content {
+    width: 100%;
     max-width: 1080px;
 }
 
@@ -518,6 +519,42 @@ footer {
 
 .mdl-mini-footer {
     background-color: Black;
+}
+
+.mdl-js-layout p, li {
+    text-align: left !important;
+    width: 65%;
+    margin: 0 auto;
+}
+
+a {
+    color: #2F3450;
+}
+
+a:hover {
+    color: #1f2234;
+}
+
+/* Glyph, by Harry Roberts */
+
+hr.fancy {
+    padding: 0;
+    border: none;
+    border-top: medium double #333;
+    color: #333;
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+}
+
+hr.fancy:after {
+    content: "§";
+    display: inline-block;
+    position: relative;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
 /* TODO remove all "demo" names, simplify statements (switch to SASS)*/
