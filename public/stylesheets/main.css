@@ -266,6 +266,7 @@ html, body {
     padding-top: 50px !important;
     width: 150px;
     height: 150px;
+    padding-bottom:25px;
 }
 
 .demo-layout .mdl-layout__header .mdl-layout__drawer-button {

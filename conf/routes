@@ -6,6 +6,12 @@
 GET        /                    controllers.Application.splash
 GET        /research            controllers.Application.research
 GET        /application         controllers.Application.index
+GET        /about               controllers.Application.about
+GET        /help                controllers.Application.help
+GET        /contact             controllers.Application.contact
+GET        /press               controllers.Application.press
+GET        /devs                controllers.Application.devs
+GET        /privacy             controllers.Application.privacyPolicy
 
 # Receives a JSON response for adding google users to a database
 PUT        /googleUser          controllers.GoogleUser.googleUser

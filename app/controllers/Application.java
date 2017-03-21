@@ -17,16 +17,7 @@ public class Application extends Controller {
         /* TODO check is user is logged in, if not redirect to splash */
 //        if(!GoogleUser.getGoogleUserID().equals("")) {
         currentPage = "index";
-        response().setCookie(
-                "userToken",        // name
-                "" + GoogleUser.getGoogleIdToken(),         // value
-                36000,           // maximum age
-                "/",   // path
-                "localhost", // domain
-                true,          // secure
-                false            // http only
-        );
-        return ok(index.render("Ursa - Dashboard", head.render(), navbar.render(), footer.render()));
+        return ok(index.render("Ursa - Dashboard", head.render(), navbar.render("Dashboard"), footer.render()));
 //        } else {
 //            return splash();
 //        }
@@ -35,7 +26,36 @@ public class Application extends Controller {
 
     public static Result research() {
         currentPage = "research";
-        return ok(research.render("Ursa - Research", head.render(), navbar.render(), footer.render()));
+        return ok(research.render("Ursa - Research", head.render(), navbar.render("Research"), footer.render()));
     }
 
+    public static Result about() {
+        currentPage = "about";
+        return ok(about.render("Ursa - Privacy", head.render(), navbar_aux.render("About Ursa"), footer.render()));
+    }
+
+    public static Result help() {
+        currentPage = "help";
+        return ok(help.render("Ursa - Privacy", head.render(), navbar_aux.render("Help"), footer.render()));
+    }
+
+    public static Result contact() {
+        currentPage = "contact";
+        return ok(contact.render("Ursa - Privacy", head.render(), navbar_aux.render("Get in touch"), footer.render()));
+    }
+
+    public static Result press() {
+        currentPage = "press";
+        return ok(press.render("Ursa - Privacy", head.render(), navbar_aux.render("Press Kit"), footer.render()));
+    }
+
+    public static Result devs() {
+        currentPage = "devs";
+        return ok(devs.render("Ursa - Privacy", head.render(), navbar_aux.render("Developers"), footer.render()));
+    }
+
+    public static Result privacyPolicy() {
+        currentPage = "privacy";
+        return ok(privacypolicy.render("Ursa - Privacy", head.render(), navbar_aux.render("Privacy Policy"), footer.render()));
+    }
 }
