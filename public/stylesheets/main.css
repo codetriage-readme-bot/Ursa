@@ -469,6 +469,7 @@ html, body {
 
 .muted-text {
     color: rgba(0, 0, 0, 0.56);
+    width: auto !important;
 }
 
 .page-title {
@@ -533,6 +534,11 @@ a {
 
 a:hover {
     color: #1f2234;
+}
+
+footer a:hover {
+    color: white;
+    font-weight:bold;
 }
 
 /* Glyph, by Harry Roberts */
