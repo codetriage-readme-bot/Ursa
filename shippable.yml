@@ -6,5 +6,5 @@ before_script:
 
 build:
   ci:
-    - sbt clean compile test
+    - sbt test
     - sbt run
