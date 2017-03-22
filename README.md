@@ -14,17 +14,25 @@ Ursa is built using the [Play Framework](https://www.playframework.com/) with Ja
 To install SBT from the command line (Ubuntu):
 
 ```
-echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-sudo apt-get update
-sudo apt-get install sbt
+> echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+> sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+> sudo apt-get update
+> sudo apt-get install sbt
 ```
 
-To start the serber & launch Ursa:
+To start the server & launch Ursa:
 
 ```
-sbt run
+> sbt run
 ```
+
+By default Play will run on port 9000. To change this, you can run:
+
+```
+> sbt
+> run PORT
+```
+Where port is the port number desired (80 will allow you to enter `localhost` in your browser to test).
 
 All dependencies should be automatically downloaded and integrated into the program. A testing DB will need to be set up.
 Ursa is currently set up to utilize a MySQL server. In the **application.conf** file find and edit the following:
@@ -37,6 +45,7 @@ db.default.password= TEST DB PASSWORD
 ```
 
 The current DB schema used is as follows:
+
 ```
 id  VARCHAR(1000) PRIMARY KEY
 first_name VARCHAR(500) NOT NULL
