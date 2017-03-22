@@ -1,25 +1,23 @@
-import org.junit.*;
+import org.junit.Test;
+import play.twirl.api.Content;
+import views.html.fragments.*;
+import views.html.*;
 
-import static org.fest.assertions.Assertions.*;
-
-
-/**
- * Simple (JUnit) tests that can call all parts of a play app.
- * If you are interested in mocking a whole application, see the wiki for more details.
- */
 public class ApplicationTest {
 
     @Test
     public void simpleCheck() {
+        /* Make sure testing framework is alive and well. */
         int a = 1 + 1;
-        assertThat(a).isEqualTo(2);
+        assert a == 2;
     }
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.index.render("Your new application is ready.");
-        assertThat(contentType(html)).isEqualTo("text/html");
-        assertThat(contentAsString(html)).contains("Your new application is ready.");
+        /* Ensure splash page + head + footer render correctly */
+        Content html = splash.render("Ursa", head.render(), footer.render());
+        assert html.contentType().equals("text/html");
+        assert html.toString().contains("<!-- For Testing Purposes -->");
     }
 
 
