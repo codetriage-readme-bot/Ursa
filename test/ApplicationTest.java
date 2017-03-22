@@ -1,7 +1,10 @@
 import org.junit.Test;
+import play.Application;
+import play.test.Helpers;
+import play.test.WithBrowser;
 import play.twirl.api.Content;
-import views.html.fragments.*;
 import views.html.*;
+import views.html.fragments.*;
 
 public class ApplicationTest {
 
