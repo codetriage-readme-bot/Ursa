@@ -1,5 +1,5 @@
 # Ursa
-Current Version: Ursa.Minor.1
+Current Version: **Ursa.Minor.1**
 
 Unified Research Support Assistant 
 
