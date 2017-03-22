@@ -1,0 +1,4 @@
+language: scala
+build:
+  ci:
+    - sbt run
