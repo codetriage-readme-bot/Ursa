@@ -59,7 +59,7 @@ imageurl VARCHAR(1000) NOT NULL
 In order for Google's Oauth2 to work correctly you'll need to [register an application](https://console.developers.google.com/) and its Client ID. Once you have this, place it in the Applicaiton class variable:
 
 ```
-    private static String googleClientId = "CLIENT ID";
+private static String googleClientId = "CLIENT ID";
 ```
 
 This will allow all components dependent on auth2 to access the Client ID. NOTE: When registering the application in Google's API Manager, make sure to include http://localhost:PORT in Authorized JavaScript origins.
