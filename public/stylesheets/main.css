@@ -409,7 +409,7 @@ html, body {
 }
 
 .ursa-card-square {
-    background-color: #2F3450;
+    background-color: black;
     margin: 10px;
 }
 
@@ -463,7 +463,7 @@ html, body {
 }
 
 .ursa-header {
-    background-color: #2f3450 !important;
+    background-color: #4A66F1 !important;
     color: #F5F5F5 !important;
 }
 
