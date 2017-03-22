@@ -110,7 +110,7 @@ public class GoogleUser extends Controller {
 //        response.fields().forEachRemaining(e -> {
 //            if (e.getKey().equals("sub")) {
 //                String dbUserToken = e.getValue().textValue();
-//                Logger.info(dbUserToken);// TODO use to sign user out
+//                Logger.info(dbUserToken);// 
 //            }
 //        });
 

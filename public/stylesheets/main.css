@@ -538,7 +538,7 @@ a:hover {
 
 footer a:hover {
     color: white;
-    font-weight:bold;
+    font-weight: bold;
 }
 
 /* Glyph, by Harry Roberts */
@@ -564,7 +564,7 @@ hr.fancy:after {
 }
 
 .version {
-    margin-right:50px !important;
+    margin-right: 50px !important;
 }
 
 /* TODO remove all "demo" names, simplify statements (switch to SASS)*/
