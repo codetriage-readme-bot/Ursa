@@ -1,5 +1,7 @@
-# Ursa
+# Ursa (Ursa.Minor.1)
 Unified Research Support Assistant 
+
+Ursa is an educational research tool developed to aid undergraduate / graduate researchers in automating certain tasks, as well as providing a unified environment for research, notes, and related tasks.
 
 # Building Ursa
 Ursa is built using the [Play Framework](https://www.playframework.com/) with Java. The project is currently set up in [Intelij](https://www.jetbrains.com/idea/) however it can be built and edited in most environments. Base requirements to build Ursa are:
