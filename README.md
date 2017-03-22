@@ -1,5 +1,6 @@
 # Ursa
 Current Version: Ursa.Minor.1
+
 Unified Research Support Assistant 
 
 Ursa is an educational research tool developed to aid undergraduate / graduate researchers in automating certain tasks, as well as providing a unified environment for research, notes, and related tasks.
