@@ -1,6 +1,8 @@
 # Ursa
 
-[![Join the chat at https://gitter.im/Ursa-app/Lobby](https://badges.gitter.im/Ursa-app/Lobby.svg)](https://gitter.im/Ursa-app/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)]() [![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg?style=flat-square)]()
+
+
 
 Current Version: **Ursa.Minor.1**
 
