@@ -1,4 +1,9 @@
-language: scala
+language:
+
+before_script:
+  - mkdir -p shippable/testresults
+  - ln -s sbt test shippable/testresults
+
 build:
   ci:
     - sbt run
