@@ -1,6 +1,6 @@
 # Ursa
 
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby) [![Run Status](https://api.shippable.com/projects/58d2d2f7a8fea50500ee6280/badge?branch=master)](https://app.shippable.com/github/Ghosts/Ursa)
 
 
 Current Version: **Ursa.Minor.1**
