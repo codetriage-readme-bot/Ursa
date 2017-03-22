@@ -6,6 +6,7 @@ import views.html.*;
 import views.html.fragments.*;
 
 public class Application extends Controller {
+    private static String googleClientId = "554187524614-bkdf68gkhjs7a9gepdd72vbf9lepve8j.apps.googleusercontent.com";
     public static String currentPage = "index";
 
     /* Main Pages */
@@ -59,5 +60,9 @@ public class Application extends Controller {
     public static Result privacyPolicy() {
         currentPage = "privacy";
         return ok(privacypolicy.render("Ursa | Privacy", head.render(), navbar_aux.render("Privacy Policy"), footer.render()));
+    }
+
+    public static String getGoogleClientId() {
+        return googleClientId;
     }
 }
