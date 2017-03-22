@@ -1,6 +1,7 @@
 # Ursa
 
 [![Join the chat at https://gitter.im/Ursa-app/Lobby](https://badges.gitter.im/Ursa-app/Lobby.svg)](https://gitter.im/Ursa-app/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Current Version: **Ursa.Minor.1**
 
 Unified Research Support Assistant 
