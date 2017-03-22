@@ -2,9 +2,9 @@ language: scala
 
 before_script:
   - mkdir -p shippable/testresults
-  - ln -s ../target/test-reports shippable/testresults
+  - ln -s /target/test-reports shippable/testresults
 
 build:
   ci:
-    - sbt test
+    - sbt clean compile test
     - sbt run
