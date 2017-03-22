@@ -439,7 +439,7 @@ html, body {
 }
 
 .mdl-button--icon {
-    color: #2F3450;
+    color: white;
 }
 
 .ursa-options .mdl-card__actions {
@@ -564,7 +564,7 @@ hr.fancy:after {
 }
 
 .version {
-    margin-right: 50px !important;
+   margin-right: 100px !important;
 }
 
 /* TODO Switch to SASS*/
