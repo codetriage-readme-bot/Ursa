@@ -1,4 +1,7 @@
-# Ursa
+<p align="center">
+<img src="https://raw.githubusercontent.com/Ghosts/Ursa/master/public/images/logo.png"/>
+  <h1>Ursa</h1>
+</p>
 
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby) [![Run Status](https://api.shippable.com/projects/58d2d2f7a8fea50500ee6280/badge?branch=master)](https://app.shippable.com/github/Ghosts/Ursa)
 
