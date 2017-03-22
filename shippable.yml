@@ -1,4 +1,4 @@
-language:
+language: scala
 
 before_script:
   - mkdir -p shippable/testresults
