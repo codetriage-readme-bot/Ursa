@@ -1,6 +1,6 @@
 # Ursa
 
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)]() [![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg?style=flat-square)]()
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby) [![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg?style=flat-square)](https://github.com/ghosts/ursa)
 
 
 
