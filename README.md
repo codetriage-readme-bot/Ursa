@@ -32,7 +32,7 @@ By default Play will run on port 9000. To change this, you can run:
 > sbt
 > run PORT
 ```
-Where port is the port number desired (80 will allow you to enter `localhost` in your browser to test).
+Where PORT is the port number desired (80 will allow you to enter `localhost` in your browser to test).
 
 All dependencies should be automatically downloaded and integrated into the program. A testing DB will need to be set up.
 Ursa is currently set up to utilize a MySQL server. In the **application.conf** file find and edit the following:
