@@ -38,6 +38,11 @@ Ursa is built under the <a href="https://github.com/Ghosts/Ursa/blob/master/LICE
 Any external sources integrated into Ursa must retain the full copyright and integriy of the Ursa project.
 </p>
 
+<h2>Questions?</h2>
+<p>
+For any questions on issues, feature requests, or generic inquiries please either open a discussion on the appropriate GitHub issue page, or join Ursa on <a href="https://gitter.im/Ursa-app/Lobby" target="_blank">Gitter</a>. 
+</p>
+
 <hr/>
 
 <p>
