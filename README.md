@@ -3,7 +3,7 @@
   <h1>Ursa</h1>
 </p>
 
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby) [![Run Status](https://api.shippable.com/projects/58d2d2f7a8fea50500ee6280/badge?branch=master)](https://app.shippable.com/github/Ghosts/Ursa)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby) [![Run Status](https://api.shippable.com/projects/58d2d2f7a8fea50500ee6280/badge?branch=master)](https://app.shippable.com/github/Ghosts/Ursa) [![Code Triagers Badge](https://www.codetriage.com/ghosts/ursa/badges/users.svg)](https://www.codetriage.com/ghosts/ursa)
 
 
 Current Version: **Ursa.Minor.1**
