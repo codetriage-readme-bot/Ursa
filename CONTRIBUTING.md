@@ -28,6 +28,10 @@ Pull requests <b>must</b>:
 </ul>
 </p>
 
+<h3>Find an issue / bug in Ursa?</h3>
+<p>
+You can help Ursa grow and improve without programming anything yourself! If you come across an issue, error, or warning of any type
+<a href="https://github.com/ghosts/ursa/issues" target="_blank">create an issue</a> on GitHub.
 <h2>License Policy </h2>
 <p>
 Ursa is built under the <a href="https://github.com/Ghosts/Ursa/blob/master/LICENSE" target="_blank">Mozilla Public License Version 2.0</a>
