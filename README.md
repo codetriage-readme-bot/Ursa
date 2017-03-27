@@ -31,7 +31,7 @@ To install SBT from the command line (Ubuntu):
 To start the server & launch Ursa:
 
 ```
-> sbt run
+> sbt clean compile run
 ```
 
 By default Play will run on port 9000. To change this, you can run:
