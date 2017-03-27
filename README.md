@@ -70,3 +70,7 @@ private static String googleClientId = "CLIENT ID";
 ```
 
 This will allow all components dependent on auth2 to access the Client ID. NOTE: When registering the application in Google's API Manager, make sure to include http://localhost:PORT in Authorized JavaScript origins.
+
+# Contributing to Ursa
+
+Please look at our [documentation on contributing to Ursa](https://github.com/Ghosts/Ursa/blob/master/CONTRIBUTING.md) for more information.
