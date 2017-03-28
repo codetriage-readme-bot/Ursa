@@ -10,6 +10,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -153,17 +154,32 @@ public class GoogleUser extends Controller {
                 }
             });
             try {
-                //TODO check if primary key exists, if so - update don't try to insert
-                String sql = ds.getConnection().nativeSQL("INSERT INTO ursausers VALUES(" + "\"" + idToken + "\","
-                        + "\"" + first_name + "\"," +
-                        "\"" + last_name + "\", " +
-                        "\"" + email + "\", " +
-                        "\"" + locale + "\", " +
-                        "\"" + imageurl + "\");");
+                String primaryKeySql = ds.getConnection().nativeSQL("SELECT * FROM ursausers WHERE id = " + idToken + ";");
+                Statement primaryKeyCheck = ds.getConnection().createStatement();
+                ResultSet resultSet = primaryKeyCheck.executeQuery(primaryKeySql);
+                if (resultSet.next()){
+                    String sql = ds.getConnection().nativeSQL("UPDATE ursausers SET first_name=\"" + first_name
+                            + "\" last_name=\"" + last_name
+                            + "\" email =\"" + email
+                            + "\" localse =\"" + locale
+                            + "\" imageurl =\"" + imageurl
+                            + "WHERE id =\"" + idToken + ";");
 
-                Statement stmt = ds.getConnection().createStatement();
+                    Statement stmt = ds.getConnection().createStatement();
+                    stmt.execute(sql);
+                    stmt.close();
+                } else {
+                    String sql = ds.getConnection().nativeSQL("INSERT INTO ursausers VALUES(" + "\"" + idToken + "\","
+                            + "\"" + first_name + "\"," +
+                            "\"" + last_name + "\", " +
+                            "\"" + email + "\", " +
+                            "\"" + locale + "\", " +
+                            "\"" + imageurl + "\");");
 
-                stmt.execute(sql);
+                    Statement stmt = ds.getConnection().createStatement();
+                    stmt.execute(sql);
+                    stmt.close();
+                }
             } catch (SQLException e1) {
                 Logger.error(e1.toString());
             }
