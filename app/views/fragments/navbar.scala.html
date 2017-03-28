@@ -7,7 +7,9 @@
 
         }
         function userSignedIn() {
-            var currentUser = document.getElementById('#currentUser');
+            var userImage = document.getElementById("profileImage");
+            userImage.innerHTML = "<img src = \"@{GoogleUser.getGoogleUserImageURL}\"/>";
+            var currentUser = document.getElementById('currentUser');
             currentUser.innerHTML = "Currently signed in as:  \<br/> " + "@GoogleUser.getGoogleUserEmail";
         }
         /* TODO:
@@ -67,7 +69,8 @@
     <div class="ursa-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="ursa-drawer-header">
             <img src="@routes.Assets.at("images/logo.png")" class="logo" onload="userSignedIn()">
-            <span id="#currentUser" class="muted-text center">&nbsp;</span>
+            <div id="profileImage"></div>
+            <span id="currentUser" class="muted-text center">&nbsp;</span>
             <a class=" muted-text center " href="#" onclick="signOutUser();">Sign out</a>
         </header>
         <nav class="ursa-navigation mdl-navigation mdl-color--blue-grey-800">
