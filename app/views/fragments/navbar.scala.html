@@ -1,11 +1,26 @@
 @(pageName: String)
-<script type="text/javascript">
-        function onLoad() {
-            gapi.load('auth2', function () {
-                gapi.auth2.init();
-            });
 
-        }
+<script type="text/javascript">
+        window.onLoadCallBack = function() {
+            gapi.load('auth2', function () {
+                // Retrieve the singleton for the GoogleAuth library and set up the client.
+                auth2 = gapi.auth2.init({
+                    client_id: '@{Application.getGoogleClientId}',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    scope: 'https://www.googleapis.com/auth/drive'
+                });
+
+                auth2.then(function () {
+                    if (!auth2.isSignedIn.get()) {
+                        window.location = "/";
+                    } else {
+                        userSignedIn();
+                    }
+                });
+            });
+        };
+
         function userSignedIn() {
             var userImage = document.getElementById("profileImage");
             userImage.innerHTML = "<img src = \"@{GoogleUser.getGoogleUserImageURL}\"/>";
@@ -68,7 +83,7 @@
     </header>
     <div class="ursa-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="ursa-drawer-header">
-            <img src="@routes.Assets.at("images/logo.png")" class="logo" onload="userSignedIn()">
+            <img src="@routes.Assets.at("images/logo.png")" class="logo">
             <div id="profileImage"></div>
             <span id="currentUser" class="muted-text center">&nbsp;</span>
             <a class=" muted-text center " href="#" onclick="signOutUser();">Sign out</a>
@@ -85,8 +100,6 @@
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
-    <script type="application/javascript">
-var FAQBOT_PUBLIC_KEY = "59f6e241cfb0f7b76c5f6c0c27a51866dd101c61";
-</script>
-    <div id="faqbot-58rZl8DgthS"></div>
-    <script src="https://faqbot.co/public/js/bundle.js"></script>
+<script type="application/javascript">var FAQBOT_PUBLIC_KEY = "59f6e241cfb0f7b76c5f6c0c27a51866dd101c61";</script>
+<div id="faqbot-58rZl8DgthS"></div>
+<script src="https://faqbot.co/public/js/bundle.js"></script>
