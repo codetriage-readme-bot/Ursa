@@ -160,10 +160,10 @@ public class GoogleUser extends Controller {
                 if (resultSet.next()){
                     String sql = ds.getConnection().nativeSQL("UPDATE ursausers SET first_name=\"" + first_name
                             + "\" last_name=\"" + last_name
-                            + "\" email =\"" + email
-                            + "\" localse =\"" + locale
-                            + "\" imageurl =\"" + imageurl
-                            + "WHERE id =\"" + idToken + ";");
+                            + "\" email=\"" + email
+                            + "\" locale=\"" + locale
+                            + "\" imageurl=\"" + imageurl
+                            + "\" WHERE id=\"" + idToken + ";");
 
                     Statement stmt = ds.getConnection().createStatement();
                     stmt.execute(sql);
