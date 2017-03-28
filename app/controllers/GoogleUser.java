@@ -110,7 +110,7 @@ public class GoogleUser extends Controller {
 //        response.fields().forEachRemaining(e -> {
 //            if (e.getKey().equals("sub")) {
 //                String dbUserToken = e.getValue().textValue();
-//                Logger.info(dbUserToken);// 
+//                Logger.info(dbUserToken);//
 //            }
 //        });
 
@@ -155,6 +155,7 @@ public class GoogleUser extends Controller {
                 }
             });
             try {
+                //TODO check if primary key exists, if so - update don't try to insert
                 String sql = ds.getConnection().nativeSQL("INSERT INTO ursausers VALUES(" + "\"" + idToken + "\","
                         + "\"" + first_name + "\"," +
                         "\"" + last_name + "\", " +

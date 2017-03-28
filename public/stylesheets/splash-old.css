@@ -1,11 +1,11 @@
-body {
-    height: 100%;
-
-}
-
 .splash {
-    overflow: hidden;
     background: radial-gradient(ellipse at bottom, #0a0e13 0%, #2F3450 100%);
+    overflow:hidden;
+    width:100%;
+    padding:0;
+    margin:0 auto;
+    min-height: 95vh;
+    display:block;
 }
 
 .abcRioButton {
@@ -97,6 +97,8 @@ body {
 
 .hspace {
     padding-top: 50px;
+    height:1px;
+    width:1px;
 }
 
 .enter {

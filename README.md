@@ -1,9 +1,17 @@
-# Ursa
+<p align="center">
+<img src="https://raw.githubusercontent.com/Ghosts/Ursa/master/public/images/logo.png"/>
+  <h1>Ursa</h1>
+</p>
+
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby) [![Run Status](https://api.shippable.com/projects/58d2d2f7a8fea50500ee6280/badge?branch=master)](https://app.shippable.com/github/Ghosts/Ursa) [![Code Triagers Badge](https://www.codetriage.com/ghosts/ursa/badges/users.svg)](https://www.codetriage.com/ghosts/ursa)
+
+
 Current Version: **Ursa.Minor.1**
 
 Unified Research Support Assistant 
 
-Ursa is an educational research tool developed to aid undergraduate / graduate researchers in automating certain tasks, as well as providing a unified environment for research, notes, and related tasks.
+Ursa is an educational tool developed to improve the quality of research, and make the process more manageable. By unifying various components of the research process, and automating standard tasks, we can provide researchers with a structure and streamlined experience. Ursa will expand over time to continually provide researchers with new and innovative tools.
+
 
 # Building Ursa
 Ursa is built using the [Play Framework](https://www.playframework.com/) with Java. The project is currently set up in [Intelij](https://www.jetbrains.com/idea/) however it can be built and edited in most environments. Base requirements to build Ursa are:
@@ -14,17 +22,25 @@ Ursa is built using the [Play Framework](https://www.playframework.com/) with Ja
 To install SBT from the command line (Ubuntu):
 
 ```
-echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
-sudo apt-get update
-sudo apt-get install sbt
+> echo "deb https://dl.bintray.com/sbt/debian /" | sudo tee -a /etc/apt/sources.list.d/sbt.list
+> sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2EE0EA64E40A89B84B2DF73499E82A75642AC823
+> sudo apt-get update
+> sudo apt-get install sbt
 ```
 
-To start the serber & launch Ursa:
+To start the server & launch Ursa:
 
 ```
-sbt run
+> sbt clean compile run
 ```
+
+By default Play will run on port 9000. To change this, you can run:
+
+```
+> sbt
+> run PORT
+```
+Where PORT is the port number desired (80 will allow you to enter `localhost` in your browser to test).
 
 All dependencies should be automatically downloaded and integrated into the program. A testing DB will need to be set up.
 Ursa is currently set up to utilize a MySQL server. In the **application.conf** file find and edit the following:
@@ -37,6 +53,7 @@ db.default.password= TEST DB PASSWORD
 ```
 
 The current DB schema used is as follows:
+
 ```
 id  VARCHAR(1000) PRIMARY KEY
 first_name VARCHAR(500) NOT NULL
@@ -46,4 +63,14 @@ locale VARCHAR(5) NOT NULL
 imageurl VARCHAR(1000) NOT NULL
 ```
 
+In order for Google's Oauth2 to work correctly you'll need to [register an application](https://console.developers.google.com/) and its Client ID. Once you have this, place it in the Applicaiton class variable:
 
+```
+private static String googleClientId = "CLIENT ID";
+```
+
+This will allow all components dependent on auth2 to access the Client ID. NOTE: When registering the application in Google's API Manager, make sure to include http://localhost:PORT in Authorized JavaScript origins.
+
+# Contributing to Ursa
+
+Please look at our [documentation on contributing to Ursa](https://github.com/Ghosts/Ursa/blob/master/CONTRIBUTING.md) for more information.
