@@ -24,9 +24,7 @@ public class GoogleUser extends Controller {
     private static String googleUserImageURL = "";
     private static String googleUserEmail = "";
     private static String googleIdToken = "";
-    private static String locale = "";
-    private static String first_name = "";
-    private static String last_name = "";
+
 
     public static String getGoogleUserID() {
         return googleUserID;
@@ -77,11 +75,7 @@ public class GoogleUser extends Controller {
             }
 
         });
-        GoogleUserObject googleUserObject = new GoogleUserObject(getGoogleUserID(),
-                getGoogleUserName(),
-                getGoogleUserImageURL(),
-                getGoogleUserEmail(),
-                getGoogleIdToken());
+        GoogleUserObject googleUserObject = new GoogleUserObject(getGoogleUserID());
         googleUserObject.getGoogleUserObject();
         return ok("200");
     }
@@ -119,17 +113,15 @@ public class GoogleUser extends Controller {
     static class GoogleUserObject {
         static DataSource ds = DB.getDataSource("default", play.api.Play.current());
         private String id;
-        private String name;
         private String imageurl;
         private String email;
         private String idToken;
-
-        public GoogleUserObject(String id, String name, String imageurl, String email, String idToken) {
+        private String locale = "";
+        private String first_name = "";
+        private String last_name = "";
+        public GoogleUserObject(String id) {
             this.id = id;
-            this.name = name;
-            this.imageurl = imageurl;
-            this.email = email;
-            this.idToken = idToken;
+
         }
 
         public void getGoogleUserObject() {
@@ -159,12 +151,11 @@ public class GoogleUser extends Controller {
                 ResultSet resultSet = primaryKeyCheck.executeQuery(primaryKeySql);
                 if (resultSet.next()){
                     String sql = ds.getConnection().nativeSQL("UPDATE ursausers SET first_name=\"" + first_name
-                            + "\" last_name=\"" + last_name
-                            + "\" email=\"" + email
-                            + "\" locale=\"" + locale
-                            + "\" imageurl=\"" + imageurl
-                            + "\" WHERE id=\"" + idToken + ";");
-
+                            + "\",  last_name=\"" + last_name
+                            + "\",  email=\"" + email
+                            + "\",  locale=\"" + locale
+                            + "\",  imageurl=\"" + imageurl
+                            + "\"   WHERE id=" + idToken + ";");
                     Statement stmt = ds.getConnection().createStatement();
                     stmt.execute(sql);
                     stmt.close();
