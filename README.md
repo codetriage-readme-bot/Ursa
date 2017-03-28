@@ -1,6 +1,9 @@
-# Ursa
+<p align="center">
+<img src="https://raw.githubusercontent.com/Ghosts/Ursa/master/public/images/logo.png"/>
+  <h1>Ursa</h1>
+</p>
 
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby)
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?style=flat-square)](https://gitter.im/Ursa-app/Lobby) [![Run Status](https://api.shippable.com/projects/58d2d2f7a8fea50500ee6280/badge?branch=master)](https://app.shippable.com/github/Ghosts/Ursa) [![Code Triagers Badge](https://www.codetriage.com/ghosts/ursa/badges/users.svg)](https://www.codetriage.com/ghosts/ursa)
 
 
 Current Version: **Ursa.Minor.1**
@@ -28,7 +31,7 @@ To install SBT from the command line (Ubuntu):
 To start the server & launch Ursa:
 
 ```
-> sbt run
+> sbt clean compile run
 ```
 
 By default Play will run on port 9000. To change this, you can run:
@@ -67,3 +70,7 @@ private static String googleClientId = "CLIENT ID";
 ```
 
 This will allow all components dependent on auth2 to access the Client ID. NOTE: When registering the application in Google's API Manager, make sure to include http://localhost:PORT in Authorized JavaScript origins.
+
+# Contributing to Ursa
+
+Please look at our [documentation on contributing to Ursa](https://github.com/Ghosts/Ursa/blob/master/CONTRIBUTING.md) for more information.

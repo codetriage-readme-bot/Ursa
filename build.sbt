@@ -6,7 +6,7 @@ lazy val `ursa` = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.7"
 
-libraryDependencies ++= Seq(jdbc, cache, javaWs, "mysql" % "mysql-connector-java" % "5.1.27")
+libraryDependencies ++= Seq(jdbc, cache, javaWs, "mysql" % "mysql-connector-java" % "5.1.27", "com.novocode" % "junit-interface" % "0.11" % Test)
 
 unmanagedResourceDirectories in Test <+= baseDirectory(_ / "target/web/public/test")
 
