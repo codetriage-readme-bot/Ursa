@@ -4,15 +4,9 @@ version := "1.0"
 
 lazy val `ursa` = (project in file(".")).enablePlugins(PlayJava)
 
-
-
-//val main = play.Project(appName, appVersion, appDependencies).settings(
-//  resolvers += Resolver.sonatypeRepo("snapshots")
-//)
-
 scalaVersion := "2.11.7"
 
-libraryDependencies ++= Seq(jdbc, cache, javaWs, "mysql" % "mysql-connector-java" % "5.1.27")
+libraryDependencies ++= Seq(jdbc, cache, javaWs, "mysql" % "mysql-connector-java" % "5.1.27", "com.novocode" % "junit-interface" % "0.11" % Test)
 
 unmanagedResourceDirectories in Test <+= baseDirectory(_ / "target/web/public/test")
 
