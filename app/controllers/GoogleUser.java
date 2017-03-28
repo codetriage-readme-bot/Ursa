@@ -82,7 +82,6 @@ public class GoogleUser extends Controller {
                 getGoogleUserEmail(),
                 getGoogleIdToken());
         googleUserObject.getGoogleUserObject();
-        /* TODO: Authenticate user w/ tokens instead of ID, store information in a database (mongodb) */
         return ok("200");
     }
 
@@ -95,7 +94,6 @@ public class GoogleUser extends Controller {
     }
 
     public static Result signOut() {
-        //TODO wait to test signOut on standard setup (non-localhost) before implementing
 //        JsonNode json = request().body().asJson();
 //        json.fields().forEachRemaining(e -> {
 //            if (e.getKey().equals("id")) {
