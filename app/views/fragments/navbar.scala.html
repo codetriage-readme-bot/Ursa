@@ -40,8 +40,8 @@
             });
         }
 </script>
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+<div class="ursa-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="ursa-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
             <span class="mdl-layout-title">@pageName</span>
             <div class="mdl-layout-spacer"></div>
@@ -64,13 +64,13 @@
             </ul>
         </div>
     </header>
-    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-        <header class="demo-drawer-header">
+    <div class="ursa-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="ursa-drawer-header">
             <img src="@routes.Assets.at("images/logo.png")" class="logo" onload="userSignedIn()">
             <span id="#currentUser" class="muted-text center">&nbsp;</span>
             <a class=" muted-text center " href="#" onclick="signOutUser();">Sign out</a>
         </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+        <nav class="ursa-navigation mdl-navigation mdl-color--blue-grey-800">
             <a class="mdl-navigation__link @if(Application.currentPage.equals("index")) {activePage}" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 dashboard</i>
                 Dashboard</a>
@@ -82,3 +82,8 @@
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
+    <script type="application/javascript">
+var FAQBOT_PUBLIC_KEY = "59f6e241cfb0f7b76c5f6c0c27a51866dd101c61";
+</script>
+    <div id="faqbot-58rZl8DgthS"></div>
+    <script src="https://faqbot.co/public/js/bundle.js"></script>

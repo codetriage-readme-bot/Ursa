@@ -82,7 +82,6 @@ public class GoogleUser extends Controller {
                 getGoogleUserEmail(),
                 getGoogleIdToken());
         googleUserObject.getGoogleUserObject();
-        /* TODO: Authenticate user w/ tokens instead of ID, store information in a database (mongodb) */
         return ok("200");
     }
 
@@ -95,7 +94,6 @@ public class GoogleUser extends Controller {
     }
 
     public static Result signOut() {
-        //TODO wait to test signOut on standard setup (non-localhost) before implementing
 //        JsonNode json = request().body().asJson();
 //        json.fields().forEachRemaining(e -> {
 //            if (e.getKey().equals("id")) {
@@ -110,7 +108,7 @@ public class GoogleUser extends Controller {
 //        response.fields().forEachRemaining(e -> {
 //            if (e.getKey().equals("sub")) {
 //                String dbUserToken = e.getValue().textValue();
-//                Logger.info(dbUserToken);// TODO use to sign user out
+//                Logger.info(dbUserToken);//
 //            }
 //        });
 
@@ -155,6 +153,7 @@ public class GoogleUser extends Controller {
                 }
             });
             try {
+                //TODO check if primary key exists, if so - update don't try to insert
                 String sql = ds.getConnection().nativeSQL("INSERT INTO ursausers VALUES(" + "\"" + idToken + "\","
                         + "\"" + first_name + "\"," +
                         "\"" + last_name + "\", " +

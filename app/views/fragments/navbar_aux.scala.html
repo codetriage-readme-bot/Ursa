@@ -6,8 +6,8 @@
             });
         }
 </script>
-<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-    <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
+<div class="ursa-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+    <header class="ursa-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
             <span class="mdl-layout-title">@pageName</span>
             <div class="mdl-layout-spacer"></div>
@@ -30,35 +30,47 @@
             </ul>
         </div>
     </header>
-    <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
-        <header class="demo-drawer-header">
+    <div class="ursa-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+        <header class="ursa-drawer-header">
             <img src="@routes.Assets.at("images/logo.png")" class="logo">
             <br/>
             <p class="muted-text center">Auxiliary Pages</p>
             <br/>
         </header>
-        <nav class="demo-navigation mdl-navigation mdl-color--blue-grey-800">
+        <nav class="ursa-navigation mdl-navigation mdl-color--blue-grey-800">
             <a class="mdl-navigation__link @if(Application.currentPage.equals("home")) {activePage}" href="/"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 home</i>
-                Home</a>
+                Home
+            </a>
             <a class="mdl-navigation__link @if(Application.currentPage.equals("about")) {activePage}" href="/about"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 favorite</i>
-                About</a>
+                About
+            </a>
             <a class="mdl-navigation__link @if(Application.currentPage.equals("help")) {activePage}" href="/help"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 help</i>
-                Help</a>
+                Help
+            </a>
             <a class="mdl-navigation__link @if(Application.currentPage.equals("contact")) {activePage}" href="/contact"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 comment</i>
-                Contact</a>
+                Contact
+            </a>
             <a class="mdl-navigation__link @if(Application.currentPage.equals("press")) {activePage}" href="/press"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 layers</i>
-                Press Kit</a>
+                Press Kit
+            </a>
             <a class="mdl-navigation__link @if(Application.currentPage.equals("devs")) {activePage}" href="/devs"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 extension</i>
-                Developers</a>
+                Developers
+            </a>
             <a class="mdl-navigation__link @if(Application.currentPage.equals("privacy")) {activePage}" href="/privacy"><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">
                 visibility</i>
-                Privacy Policy</a>
+                Privacy Policy
+            </a>
             <div class="mdl-layout-spacer"></div>
         </nav>
     </div>
+    <script type="application/javascript">
+var FAQBOT_PUBLIC_KEY = "59f6e241cfb0f7b76c5f6c0c27a51866dd101c61";
+</script>
+    <div id="faqbot-58rZl8DgthS"></div>
+    <script src="https://faqbot.co/public/js/bundle.js"></script>

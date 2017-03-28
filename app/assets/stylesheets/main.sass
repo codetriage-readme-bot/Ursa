@@ -1,0 +1,424 @@
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+
+/*
+
+html, body
+  font-family: 'Roboto', 'Helvetica', sans-serif
+  margin: 0
+  padding: 0
+  height: 100%
+
+.mdl-ursa
+  .mdl-layout__header-row
+    padding-left: 40px
+  .mdl-layout.is-small-screen .mdl-layout__header-row h3
+    font-size: inherit
+  .mdl-layout__tab-bar-button
+    display: none
+  .mdl-layout
+    &.is-small-screen .mdl-layout__tab-bar .mdl-button
+      display: none
+    &:not(.is-small-screen)
+      .mdl-layout__tab-bar, .mdl-layout__tab-bar-container
+        overflow: visible
+  .mdl-layout__tab-bar-container
+    height: 64px
+  .mdl-layout__tab-bar
+    padding: 0
+    padding-left: 16px
+    box-sizing: border-box
+    height: 100%
+    width: 100%
+    .mdl-layout__tab
+      height: 64px
+      line-height: 64px
+      &.is-active::after
+        background-color: white
+        height: 4px
+  main > .mdl-layout__tab-panel
+    padding: 8px
+    padding-top: 48px
+  .mdl-card
+    height: auto
+    display: flex
+    flex-direction: column
+    > *
+      height: auto
+    .mdl-card__supporting-text
+      margin: 40px
+      flex-grow: 1
+      padding: 0
+      color: inherit
+      width: calc(100% - 80px)
+  .mdl-card__supporting-text h4
+    margin-top: 0
+    margin-bottom: 20px
+  .mdl-card__actions
+    margin: 0
+    padding: 4px 40px
+    color: inherit
+    a
+      color: #00BCD4
+      margin: 0
+      &:hover, &:active
+        color: inherit
+        background-color: transparent
+  .mdl-card__supporting-text + .mdl-card__actions
+    border-top: 1px solid rgba(0, 0, 0, 0.12)
+  #add
+    position: absolute
+    right: 40px
+    top: 36px
+    z-index: 999
+  .mdl-layout__content section:not(:last-of-type)
+    position: relative
+    margin-bottom: 48px
+  section.section--center
+    max-width: 860px
+  #features section.section--center
+    max-width: 620px
+  section
+    >
+    header
+      display: flex
+      align-items: center
+      justify-content: center
+      .section__play-btn
+        min-height: 200px
+      header > .material-icons
+        font-size: 3rem
+      button
+        position: absolute
+        z-index: 99
+        top: 8px
+        right: 8px
+    .section__circle
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      flex-grow: 0
+      flex-shrink: 1
+    .section__text
+      flex-grow: 1
+      flex-shrink: 0
+      padding-top: 8px
+      h5
+        font-size: inherit
+        margin: 0
+        margin-bottom: 0.5em
+      a
+        text-decoration: none
+    .section__circle-container > .section__circle-container__circle
+      width: 64px
+      height: 64px
+      border-radius: 32px
+      margin: 8px 0
+    &.section--footer .section__circle--big
+      width: 100px
+      height: 100px
+      border-radius: 50px
+      margin: 8px 32px
+  .is-small-screen section.section--footer .section__circle--big
+    width: 50px
+    height: 50px
+    border-radius: 25px
+    margin: 8px 16px
+  section
+    &.section--footer
+      padding: 64px 0
+      margin: 0 -8px -8px -8px
+    &.section--center .section__text:not(:last-child)
+      border-bottom: 1px solid rgba(0, 0, 0, 0.13)
+  .mdl-card .mdl-card__supporting-text > h3:first-child
+    margin-bottom: 24px
+  .mdl-layout__tab-panel:not(#overview)
+    background-color: white
+  #features
+    section
+      margin-bottom: 72px
+    h4
+      margin-bottom: 16px
+
+#features h5
+  margin-bottom: 16px
+
+.mdl-ursa
+  .toc
+    border-left: 4px solid #C1EEF4
+    margin: 24px
+    padding: 0
+    padding-left: 8px
+    display: flex
+    flex-direction: column
+    h4
+      font-size: 0.9rem
+      margin-top: 0
+    a
+      color: #4DD0E1
+      text-decoration: none
+      font-size: 16px
+      line-height: 28px
+      display: block
+  .mdl-menu__container
+    z-index: 99
+
+.ursa-avatar
+  width: 48px
+  height: 48px
+  border-radius: 24px
+
+.logo
+  margin: 0 auto
+  padding-top: 50px !important
+  width: 150px
+  height: 150px
+  padding-bottom: 25px
+
+.ursa-layout .mdl-layout__header .mdl-layout__drawer-button
+  color: white
+
+.mdl-layout__drawer .avatar
+  margin-bottom: 16px
+
+.ursa-drawer
+  border: none
+  .mdl-menu__container
+    z-index: -1
+  .ursa-navigation
+    z-index: -2
+  .mdl-menu .mdl-menu__item
+    display: -webkit-flex
+    display: -ms-flexbox
+    display: flex
+    -webkit-align-items: center
+    -ms-flex-align: center
+    align-items: center
+
+/* iOS Safari specific workaround
+
+/* END iOS Safari specific workaround
+
+.ursa-drawer-header
+  box-sizing: border-box
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+  -webkit-flex-direction: column
+  -ms-flex-direction: column
+  flex-direction: column
+  -webkit-justify-content: flex-end
+  -ms-flex-pack: end
+  justify-content: flex-end
+  padding: 16px
+  height: 250px
+
+.ursa-avatar-dropdown
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+  position: relative
+  -webkit-flex-direction: row
+  -ms-flex-direction: row
+  flex-direction: row
+  -webkit-align-items: center
+  -ms-flex-align: center
+  align-items: center
+  width: 100%
+
+.ursa-navigation
+  -webkit-flex-grow: 1
+  -ms-flex-positive: 1
+  flex-grow: 1
+
+.ursa-layout .ursa-navigation .mdl-navigation__link
+  display: -webkit-flex !important
+  display: -ms-flexbox !important
+  display: flex !important
+  -webkit-flex-direction: row
+  -ms-flex-direction: row
+  flex-direction: row
+  -webkit-align-items: center
+  -ms-flex-align: center
+  align-items: center
+  color: #2F3450
+  font-weight: 500
+  &:hover
+    background-color: #4A66F1
+    color: white
+
+.ursa-navigation .mdl-navigation__link
+  .material-icons
+    font-size: 24px
+    color: rgba(0, 0, 0, 0.56)
+    margin-right: 32px
+  &:hover .material-icons
+    color: white !important
+
+.ursa-content
+  width: 100%
+  max-width: 1080px
+
+.ursa-cards
+  -webkit-align-items: flex-start
+  -ms-flex-align: start
+  align-items: flex-start
+  -webkit-align-content: flex-start
+  -ms-flex-line-pack: start
+  align-content: flex-start
+  .ursa-separator
+    height: 32px
+  .mdl-card__title.mdl-card__title
+    color: white
+    font-size: 24px
+    font-weight: 400
+  ul
+    padding: 0
+  h3
+    font-size: 1em
+
+.ursa-updates .mdl-card__title
+  min-height: 200px
+  background-image: url('images/dog.png')
+  background-position: 90% 100%
+  background-repeat: no-repeat
+
+.ursa-cards .mdl-card__actions a
+  color: #00BCD4
+  text-decoration: none
+
+.ursa-card-square
+  background-color: black
+  margin: 10px
+
+.mdl-card__supporting-text, .mdl-card__title
+  color: white !important
+
+.ursa-options
+  h3
+    margin: 0
+  .mdl-checkbox__box-outline
+    border-color: rgba(255, 255, 255, 0.89)
+  ul
+    margin: 0
+    list-style-type: none
+  li
+    margin: 4px 0
+  .material-icons
+    color: rgba(0, 0, 0, 0.89)
+
+.mdl-button--icon
+  color: white
+
+.ursa-options .mdl-card__actions
+  height: 64px
+  display: -webkit-flex
+  display: -ms-flexbox
+  display: flex
+  box-sizing: border-box
+  -webkit-align-items: center
+  -ms-flex-align: center
+  align-items: center
+
+.ursa-drawer
+  background-color: #FFFFFF !important
+
+.ursa-navigation
+  background-color: #F5F5F5 !important
+  color: #2F3450
+
+.ursa-header
+  background-color: #4A66F1 !important
+  color: #F5F5F5 !important
+
+.muted-text
+  color: rgba(0, 0, 0, 0.56)
+  width: auto !important
+
+.page-title
+  color: rgb(127, 73, 255)
+  margin-left: 25px
+
+.center
+  text-align: center !important
+  margin: 0 auto !important
+
+.mdl-menu--top-left
+  margin-left: -50px
+
+.mdl-layout__content
+  background-color: #DADADA !important
+
+.activePage
+  background-color: #E3E3E3
+
+.mdl-layout-title
+  color: white
+
+.ursa-drawer-header
+  padding: 0
+
+.mdl-textfield__input
+  color: #2F3450
+
+footer
+  z-index: 99
+  height: 10px
+  padding-top: 7px !important
+
+@media only screen and (max-width: 500px)
+  footer
+    z-index: 0
+
+.mdl-mini-footer
+  background-color: Black
+
+.mdl-js-layout p, li
+  text-align: left !important
+  width: 65%
+  margin: 0 auto
+
+a
+  color: #2F3450
+  &:hover
+    color: #1f2234
+
+footer a:hover
+  color: white
+  font-weight: bold
+
+/* Glyph, by Harry Roberts
+
+hr.fancy
+  padding: 0
+  border: none
+  border-top: medium double #333
+  color: #333
+  text-align: center
+  width: 50%
+  margin: 0 auto
+  &:after
+    content: "§"
+    display: inline-block
+    position: relative
+    top: -0.7em
+    font-size: 1.5em
+    padding: 0 0.25em
+    background: white
+
+.version
+  margin-right: 100px !important
+
+//TODO fix footer on mobile
