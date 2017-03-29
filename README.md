@@ -55,6 +55,7 @@ db.default.password= TEST DB PASSWORD
 The current DB schema used is as follows:
 
 ```
+TABLE NAME: ursausers
 id  VARCHAR(1000) PRIMARY KEY
 first_name VARCHAR(500) NOT NULL
 last_name VARCHAR(500) NOT NULL
