@@ -6,6 +6,7 @@ import views.html.*;
 import views.html.fragments.*;
 
 public class Application extends Controller {
+    /* Set your Google Client ID Here */
     private static String googleClientId = "554187524614-bkdf68gkhjs7a9gepdd72vbf9lepve8j.apps.googleusercontent.com";
     public static String currentPage = "index";
 
