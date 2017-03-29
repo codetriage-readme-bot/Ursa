@@ -1,6 +1,8 @@
 @(pageName: String)
 
 <script type="text/javascript">
+        var googleUser = {};
+        var googleAuth = {};
         window.onLoadCallBack = function() {
             gapi.load('auth2', function () {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
@@ -10,57 +12,39 @@
                     // Request scopes in addition to 'profile' and 'email'
                     scope: 'https://www.googleapis.com/auth/drive'
                 });
-
                 auth2.then(function () {
+                    googleAuth = auth2;
                     if (!auth2.isSignedIn.get()) {
                         window.location = "/";
                     } else {
-                        userSignedIn();
+                        googleUser = auth2.currentUser.get();
+                        userSignedIn(googleUser);
                     }
                 });
             });
         };
 
-        function userSignedIn() {
+        function userSignedIn(googleUser) {
+
+            var profile = googleUser.getBasicProfile();
             var userImage = document.getElementById("profileImage");
-            userImage.innerHTML = "<img src = \"@{GoogleUser.getGoogleUserImageURL}\"/>";
+            userImage.innerHTML = "<img src =" + profile.getImageUrl() +  " />";
             var currentUser = document.getElementById('currentUser');
-            currentUser.innerHTML = "Currently signed in as:  \<br/> " + "@GoogleUser.getGoogleUserEmail";
+            currentUser.innerHTML = "Currently signed in as:  \<br/> " + profile.getEmail();
         }
         /* TODO:
          * Verify user is signed in
          * Sign user out (auth2)
          * Redirect to home page to indicate success */
         function signOutUser() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
-
-                var sendData = JSON.stringify({
-                    idtoken: googleUser.getAuthResponse().id_token
-                });
-
-                $.ajax({
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    type: 'PUT',
-                    url: '/signOut',
-                    data: sendData,
-                    dataType: 'json',
-                    success: function () {
-                        window.location = "/application";
-                    }
-                });
-                window.location = "/";
-            });
+            googleAuth.disconnect();
+            window.location = "/";
         }
 </script>
 <div class="ursa-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
     <header class="ursa-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">@pageName</span>
+            <span class="mdl-layout-title">&nbsp; @pageName</span>
             <div class="mdl-layout-spacer"></div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
                 <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
@@ -74,6 +58,8 @@
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
                 <i class="material-icons">more_vert</i>
             </button>
+            <div id="profileImage"></div>
+
             <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
                 <li class="mdl-menu__item">About</li>
                 <li class="mdl-menu__item">Contact</li>
@@ -84,7 +70,6 @@
     <div class="ursa-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
         <header class="ursa-drawer-header">
             <img src="@routes.Assets.at("images/logo.png")" class="logo">
-            <div id="profileImage"></div>
             <span id="currentUser" class="muted-text center">&nbsp;</span>
             <a class=" muted-text center " href="#" onclick="signOutUser();">Sign out</a>
         </header>
