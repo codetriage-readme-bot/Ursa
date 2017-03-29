@@ -10,6 +10,7 @@ import play.mvc.Controller;
 import play.mvc.Result;
 
 import javax.sql.DataSource;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -23,9 +24,7 @@ public class GoogleUser extends Controller {
     private static String googleUserImageURL = "";
     private static String googleUserEmail = "";
     private static String googleIdToken = "";
-    private static String locale = "";
-    private static String first_name = "";
-    private static String last_name = "";
+
 
     public static String getGoogleUserID() {
         return googleUserID;
@@ -76,11 +75,7 @@ public class GoogleUser extends Controller {
             }
 
         });
-        GoogleUserObject googleUserObject = new GoogleUserObject(getGoogleUserID(),
-                getGoogleUserName(),
-                getGoogleUserImageURL(),
-                getGoogleUserEmail(),
-                getGoogleIdToken());
+        GoogleUserObject googleUserObject = new GoogleUserObject(getGoogleUserID());
         googleUserObject.getGoogleUserObject();
         return ok("200");
     }
@@ -93,42 +88,18 @@ public class GoogleUser extends Controller {
         GoogleUser.googleIdToken = googleIdToken;
     }
 
-    public static Result signOut() {
-//        JsonNode json = request().body().asJson();
-//        json.fields().forEachRemaining(e -> {
-//            if (e.getKey().equals("id")) {
-//                setGoogleUserID(e.getValue().textValue());
-//            }
-//        });
-//        String baseUrl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=";
-//        F.Promise<play.libs.ws.WSResponse> request =
-//                WS.url(baseUrl + getGoogleIdToken())
-//                        .post("");
-//        JsonNode response = request.get(1000).asJson();
-//        response.fields().forEachRemaining(e -> {
-//            if (e.getKey().equals("sub")) {
-//                String dbUserToken = e.getValue().textValue();
-//                Logger.info(dbUserToken);//
-//            }
-//        });
-
-        return ok("200");
-    }
-
     static class GoogleUserObject {
         static DataSource ds = DB.getDataSource("default", play.api.Play.current());
         private String id;
-        private String name;
         private String imageurl;
         private String email;
         private String idToken;
-
-        public GoogleUserObject(String id, String name, String imageurl, String email, String idToken) {
+        private String locale = "";
+        private String first_name = "";
+        private String last_name = "";
+        public GoogleUserObject(String id) {
             this.id = id;
-            this.name = name;
-            this.imageurl = imageurl;
-            this.email = email;
-            this.idToken = idToken;
+
         }
 
         public void getGoogleUserObject() {
@@ -153,17 +124,31 @@ public class GoogleUser extends Controller {
                 }
             });
             try {
-                //TODO check if primary key exists, if so - update don't try to insert
-                String sql = ds.getConnection().nativeSQL("INSERT INTO ursausers VALUES(" + "\"" + idToken + "\","
-                        + "\"" + first_name + "\"," +
-                        "\"" + last_name + "\", " +
-                        "\"" + email + "\", " +
-                        "\"" + locale + "\", " +
-                        "\"" + imageurl + "\");");
+                String primaryKeySql = ds.getConnection().nativeSQL("SELECT * FROM ursausers WHERE id = " + idToken + ";");
+                Statement primaryKeyCheck = ds.getConnection().createStatement();
+                ResultSet resultSet = primaryKeyCheck.executeQuery(primaryKeySql);
+                if (resultSet.next()){
+                    String sql = ds.getConnection().nativeSQL("UPDATE ursausers SET first_name=\"" + first_name
+                            + "\",  last_name=\"" + last_name
+                            + "\",  email=\"" + email
+                            + "\",  locale=\"" + locale
+                           + "\",  imageurl=\"" + imageurl
+                            + "\"   WHERE id=" + idToken + ";");
+                    Statement stmt = ds.getConnection().createStatement();
+                    stmt.execute(sql);
+                    stmt.close();
+                } else {
+                    String sql = ds.getConnection().nativeSQL("INSERT INTO ursausers VALUES(" + "\"" + idToken + "\","
+                            + "\"" + first_name + "\"," +
+                            "\"" + last_name + "\", " +
+                            "\"" + email + "\", " +
+                            "\"" + locale + "\", " +
+                            "\"" + imageurl + "\");");
 
-                Statement stmt = ds.getConnection().createStatement();
-
-                stmt.execute(sql);
+                    Statement stmt = ds.getConnection().createStatement();
+                    stmt.execute(sql);
+                    stmt.close();
+                }
             } catch (SQLException e1) {
                 Logger.error(e1.toString());
             }
