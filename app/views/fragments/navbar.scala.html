@@ -2,6 +2,7 @@
 
 <script type="text/javascript">
         var googleUser = {};
+        var googleAuth = {};
         window.onLoadCallBack = function() {
             gapi.load('auth2', function () {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
@@ -12,6 +13,7 @@
                     scope: 'https://www.googleapis.com/auth/drive'
                 });
                 auth2.then(function () {
+                    googleAuth = auth2;
                     if (!auth2.isSignedIn.get()) {
                         window.location = "/";
                     } else {
@@ -35,29 +37,8 @@
          * Sign user out (auth2)
          * Redirect to home page to indicate success */
         function signOutUser() {
-            var auth2 = gapi.auth2.getAuthInstance();
-            auth2.signOut().then(function () {
-                const googleUser = gapi.auth2.getAuthInstance().currentUser.get();
-
-                var sendData = JSON.stringify({
-                    idtoken: googleUser.getAuthResponse().id_token
-                });
-
-                $.ajax({
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    },
-                    type: 'PUT',
-                    url: '/signOut',
-                    data: sendData,
-                    dataType: 'json',
-                    success: function () {
-                        window.location = "/application";
-                    }
-                });
-                window.location = "/";
-            });
+            googleAuth.disconnect();
+            window.location = "/";
         }
 </script>
 <div class="ursa-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">

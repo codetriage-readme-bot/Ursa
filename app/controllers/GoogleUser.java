@@ -88,28 +88,6 @@ public class GoogleUser extends Controller {
         GoogleUser.googleIdToken = googleIdToken;
     }
 
-    public static Result signOut() {
-//        JsonNode json = request().body().asJson();
-//        json.fields().forEachRemaining(e -> {
-//            if (e.getKey().equals("id")) {
-//                setGoogleUserID(e.getValue().textValue());
-//            }
-//        });
-//        String baseUrl = "https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=";
-//        F.Promise<play.libs.ws.WSResponse> request =
-//                WS.url(baseUrl + getGoogleIdToken())
-//                        .post("");
-//        JsonNode response = request.get(1000).asJson();
-//        response.fields().forEachRemaining(e -> {
-//            if (e.getKey().equals("sub")) {
-//                String dbUserToken = e.getValue().textValue();
-//                Logger.info(dbUserToken);//
-//            }
-//        });
-
-        return ok("200");
-    }
-
     static class GoogleUserObject {
         static DataSource ds = DB.getDataSource("default", play.api.Play.current());
         private String id;
@@ -154,7 +132,7 @@ public class GoogleUser extends Controller {
                             + "\",  last_name=\"" + last_name
                             + "\",  email=\"" + email
                             + "\",  locale=\"" + locale
-                            + "\",  imageurl=\"" + imageurl
+                           + "\",  imageurl=\"" + imageurl
                             + "\"   WHERE id=" + idToken + ";");
                     Statement stmt = ds.getConnection().createStatement();
                     stmt.execute(sql);
