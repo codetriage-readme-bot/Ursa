@@ -10,7 +10,7 @@ Current Version: **Ursa.Minor.1**
 
 Unified Research Support Assistant 
 
-Ursa is an educational tool developed to improve the quality of research, and make the process more manageable. By unifying various components of the research process, and automating standard tasks, we can provide researchers with a structure and streamlined experience. Ursa will expand over time to continually provide researchers with new and innovative tools.
+Ursa is an educational tool developed to improve the quality of research, and make the process more manageable. By unifying various components of the research process, and automating standard tasks, we can provide researchers with a structured and streamlined experience. Ursa will expand over time to continually provide researchers with new and innovative tools.
 
 
 # Building Ursa
