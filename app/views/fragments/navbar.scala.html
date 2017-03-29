@@ -25,7 +25,6 @@
         };
 
         function userSignedIn(googleUser) {
-
             var profile = googleUser.getBasicProfile();
             var userImage = document.getElementById("profileImage");
             userImage.innerHTML = "<img src =" + profile.getImageUrl() +  " />";
