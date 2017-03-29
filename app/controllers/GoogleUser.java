@@ -97,6 +97,7 @@ public class GoogleUser extends Controller {
         private String locale = "";
         private String first_name = "";
         private String last_name = "";
+
         public GoogleUserObject(String id) {
             this.id = id;
 
@@ -127,12 +128,12 @@ public class GoogleUser extends Controller {
                 String primaryKeySql = ds.getConnection().nativeSQL("SELECT * FROM ursausers WHERE id = " + idToken + ";");
                 Statement primaryKeyCheck = ds.getConnection().createStatement();
                 ResultSet resultSet = primaryKeyCheck.executeQuery(primaryKeySql);
-                if (resultSet.next()){
+                if (resultSet.next()) {
                     String sql = ds.getConnection().nativeSQL("UPDATE ursausers SET first_name=\"" + first_name
                             + "\",  last_name=\"" + last_name
                             + "\",  email=\"" + email
                             + "\",  locale=\"" + locale
-                           + "\",  imageurl=\"" + imageurl
+                            + "\",  imageurl=\"" + imageurl
                             + "\"   WHERE id=" + idToken + ";");
                     Statement stmt = ds.getConnection().createStatement();
                     stmt.execute(sql);

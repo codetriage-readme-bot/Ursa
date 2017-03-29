@@ -31,7 +31,7 @@
                 var startApp = function () {
                     gapi.load('auth2', function () {
                         // Retrieve the singleton for the GoogleAuth library and set up the client.
-                            auth2 = gapi.auth2.init({
+                        auth2 = gapi.auth2.init({
                             client_id: '@{Application.getGoogleClientId}',
                             cookiepolicy: 'single_host_origin',
                             // Request scopes in addition to 'profile' and 'email'
@@ -71,7 +71,7 @@
                         success: function () {
                             window.location = "/application";
                         }
-                });
+                    });
                     window.location = "/application";
 
                 }
@@ -81,28 +81,28 @@
                 <div id='stars'></div>
                 <div id='stars2'></div>
                 <div id='stars3'></div>
-                    <div id='title'>
-                        <img src="@routes.Assets.at("images/logoWhite.png")" height="200" width="200">
-                        <div class="hspace"></div>
-                        <div class="hspace"></div>
+                <div id='title'>
+                    <img src="@routes.Assets.at("images/logoWhite.png")" height="200" width="200">
+                    <div class="hspace"></div>
+                    <div class="hspace"></div>
 
-                        <span>
-                            Unified Research<br/>Support Assistant
+                    <span>
+                        Unified Research<br/>Support Assistant
+                    </span>
+                    <div class="hspace"></div>
+                    <br/>
+                </div>
+                <div>
+                    <div id="gSignInWrapper">
+                        <div id="googleSignIn" class="enter" data-onsuccess="onSignIn" data-redirecturi="/application"><span>
+                            Open Ursa<br/>
                         </span>
-                        <div class="hspace"></div>
-                        <br/>
-                    </div>
-                    <div>
-                        <div id="gSignInWrapper">
-                            <div id="googleSignIn" class="enter" data-onsuccess="onSignIn" data-redirecturi="/application"><span>
-                                Open Ursa<br/>
-                            </span>
-                                <p class="little-text">(Using Google)</p>
-                            </div>
+                            <p class="little-text">(Using Google)</p>
                         </div>
-                        <br/>
-                        <div class="hspace"></div>
                     </div>
+                    <br/>
+                    <div class="hspace"></div>
+                </div>
             </div>
         </main>
         @footer

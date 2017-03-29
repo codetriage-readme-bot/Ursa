@@ -1,10 +1,10 @@
 import org.junit.Test;
-import play.Application;
-import play.test.Helpers;
-import play.test.WithBrowser;
 import play.twirl.api.Content;
 import views.html.*;
-import views.html.fragments.*;
+import views.html.fragments.footer;
+import views.html.fragments.head;
+import views.html.fragments.navbar;
+import views.html.fragments.navbar_aux;
 
 public class ApplicationTest {
 
