@@ -14,7 +14,7 @@ Ursa is an educational tool developed to improve the quality of research, and ma
 
 
 # Building Ursa
-Ursa is built using the [Play Framework](https://www.playframework.com/) with Java. The project is currently set up in [Intelij](https://www.jetbrains.com/idea/) however it can be built and edited in most environments. Base requirements to build Ursa are:
+Ursa is built using the [Play Framework](https://www.playframework.com/) with Java. The project is currently set up in [IntelliJ](https://www.jetbrains.com/idea/) however it can be built and edited in most environments. Base requirements to build Ursa are:
 
 * [Java 8 (JDK/JRE)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 * [SBT](http://www.scala-sbt.org/download.html)
